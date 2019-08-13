@@ -1,0 +1,123 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Search</title>
+   
+    <script>
+        var lst = [];
+        var xhrR = new XMLHttpRequest();
+        xhrR.addEventListener("readystatechange", ajaxReadHandler);
+
+        var xhrC = new XMLHttpRequest();
+        xhrC.addEventListener("readystatechange", ajaxCreateHandler);
+        window.onload = function () {
+            document.getElementById("addbtn").addEventListener("click", clickHandler);
+           
+        };
+        function ajaxReadHandler(evt) {
+
+            if (evt.target.readyState === 4 && evt.target.status === 200) {
+
+                alert(xhrR.responseText);
+                lst = JSON.parse(xhrR.responseText);
+                //document.write(xhrR.responseText);
+                display();
+
+            }
+
+        }
+        function ajaxCreateHandler(evt) {
+
+            if (evt.target.readyState === 4 && evt.target.status === 200) {
+
+                alert(xhrC.responseText);
+                lst = JSON.parse(xhrC.responseText);
+                console.log(JSON.stringify(lst));
+                
+             };
+
+        }
+        function clickHandler() {
+            var semester = document.getElementById("drop").value;
+            xhrR.open("get", "http://localhost:49532/api/Student/Get?semester=" + semester, true);
+            xhrR.send();
+
+        }
+        function display()
+        {
+            
+            document.getElementById("displayall").innerHTML = "";
+            for (var i = 0; i < lst.length; i++) {
+                if (lst[i] !== null) {
+                    document.getElementById("displayall").innerHTML += `
+                <tr>
+                    <td>${lst[i].usn}</td>
+                    <td>${lst[i].name}</td>
+                    <td>${lst[i].email}</td>
+                    <td>${lst[i].address}</td>
+                    <td>${lst[i].semester}</td>
+                </tr> 
+                `
+                }
+                else {
+                    alert("invalid choice");
+                }
+            }
+        }
+
+
+    </script>
+    <style>
+        table {
+  border-collapse: separate;
+  width: 100%;
+}
+
+thead, td {
+  text-align: left;
+  padding: 8px;
+  border:solid 2px black;
+  border-collapse: separate;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+    </style>
+</head>
+<body style="background: #eaeaea;">
+    <div class="std">
+        <label>Select Semester:</label>
+        <select id="drop" name="dropdown">
+
+            <option value="1" selected>1 semester</option>
+            <option value="2">2 semester</option>
+            <option value="3">3 semester</option>
+            <option value="4">4 semester</option>
+            <option value="5">5 semester</option>
+            <option value="6">6 semester</option>
+            <option value="7">7 semester</option>
+            <option value="8">8 semester</option>
+
+        </select>
+
+        &nbsp;&nbsp;<input type="submit" name="submit" value="Submit" class="btn" id="addbtn" style="width:80px;">
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>USN</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Semester</th>
+                </tr>
+            </thead>
+            <tbody id="displayall">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

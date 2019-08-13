@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Search Branch</title>
+    <script>
+        var brid = [];
+        var grade = [];
+        
+        var xhrR = new XMLHttpRequest();
+        xhrR.addEventListener("readystatechange", ajaxReadHandler);
+
+        var xhrC = new XMLHttpRequest();
+        xhrC.addEventListener("readystatechange", ajaxCreateHandler);
+        window.onload = function () {
+            document.getElementById("addbtnn").addEventListener("click", clickHandler);
+           
+            
+        };
+        function ajaxReadHandler(evt) {
+
+            if (evt.target.readyState === 4 && evt.target.status === 200) {
+                alert(xhrR.responseText);
+              
+                brid = JSON.parse(xhrR.responseText);
+                //console.log(brid);
+                //var displayusn = '<div>Enter USN:<input type="text" id="uid" value=""></div>'
+                //document.write(displayusn);
+                //console.log(document.getElementById("uid")[0].value);
+                //for(var i=0;i<brid.length;i++)
+                //{
+                //    //document.write(brid[i]);
+                //    //var lines = '<div><p>' + brid[i] + '&nbsp;&nbsp;<input type = "text" id = " marks_' + brid[i] + '" value = " " /></p></div>'
+                //    var lines = '<div><p>' + brid[i] + '&nbsp;&nbsp;<input type = "text" id = "brid[i] " value = " " /></p></div>'
+                //    // document.write(brid[i] + "\t" + lines);
+                //    document.write(lines);
+                //}
+                var lines = '<body style="background: #eaeaea;"><div>Enter USN:<input type="text" id="uid" value=""><br><br><label>' + brid[0] + '</label><input type="number" id="txt1" value=""/><br><br><label>' + brid[1] + '</label><input type="number" id="txt2" value=""/><br><br><label>' + brid[2] + '</label><input type="number" id="txt3" value=""/><br><br><label>' + brid[3] + '</label><input type="number" id="txt4" value=""/><br><br><label>' + brid[4] + '</label><input type="number" id="txt5" value=""/><br><br><label>' + brid[5] + '</label><input type="number" id="txt6" value=""/><br><br></div></body>'
+                
+                document.write(lines);
+                console.log(document.getElementById("uid").value);
+               
+                var addbutton = '<div><input type="submit" name="calculate" value="ADD" class="addbtn" id="addbtn" style="width:80px;"><input type="text" id="calculatedvalue"/><div>'
+                document.write(addbutton);
+                //var txtbox='<div><input type="text" id="grade"></div>'
+                var button = '<div><input type="submit" name="submit" value="Submit" class="insertbtn" id="insertbtn" style="width:80px;"><div>'
+                document.write(button);
+                document.getElementById("addbtn").addEventListener("click", AddHandler);
+                document.getElementById("insertbtn").addEventListener("click", insertHandler);
+               
+                
+             }
+            
+
+        }
+        function ajaxCreateHandler(evt) {
+
+            if (evt.target.readyState === 4 && evt.target.status === 200) {
+
+                alert(xhrC.responseText);
+                var brid = JSON.parse(xhrC.responseText);
+                console.log(JSON.stringify(brid));
+
+            };
+
+        }
+        function clickHandler() {
+            var branchid = document.getElementById("drop").value;
+            var semester = document.getElementById("dropp").value;
+            xhrR.open("get", "http://localhost:49532/api/branch/Get?branchid=" + branchid + "&semester=" + semester, true);
+            xhrR.send();
+
+        }
+        function AddHandler()
+        {
+            
+            var a = parseInt(document.getElementById("txt1").value);
+            var b = parseInt(document.getElementById("txt2").value);
+            var c = parseInt(document.getElementById("txt3").value);
+            var d = parseInt(document.getElementById("txt4").value);
+            var e = parseInt(document.getElementById("txt5").value);
+            var f = parseInt(document.getElementById("txt6").value);
+            var sum = a + b + c + d + e + f;
+            console.log(sum);
+            document.getElementById("calculatedvalue").value = sum;
+            for (var i = 0; i < brid.length; i++)
+            {
+                if(brid[i]>90)
+                {
+                    grade[i] = "A";
+                }
+                else if (brid[i] <= 89 && brid[i] >= 70) {
+                    grade[i] = "B";
+               }
+                else if (brid[i] <= 69 && brid[i] >= 50) {
+                    grade[i] = "C";
+               }
+               else {
+                    grade[i] = "D";
+               }
+            }
+
+        }
+        function insertHandler() {
+            
+            var insertscore = {
+                "usn": document.getElementById("uid").value,
+                "subjectid1": brid[0],
+                "subjectid2": brid[1],
+                "subjectid3": brid[2],
+                "subjectid4": brid[3],
+                "subjectid5": brid[4],
+                "subjectid6": brid[5],
+                "marks1": document.getElementById("txt1").value,
+                "marks2": document.getElementById("txt2").value,
+                "marks3": document.getElementById("txt3").value,
+                "marks4": document.getElementById("txt4").value,
+                "marks5": document.getElementById("txt5").value,
+                "marks6": document.getElementById("txt6").value,
+                "grade1": grade[0],
+                "grade2": grade[1],
+                "grade3": grade[2],
+                "grade4": grade[3],
+                "grade5": grade[4],
+                "grade6": grade[5]
+            };
+           
+            xhrR.open("post", "http://localhost:49532/api/score/Post", true);
+            insertscore = JSON.stringify(insertscore);
+            alert(insertscore);
+            xhrR.setRequestHeader("Content-Type", "application/JSON");
+            
+            xhrR.send(insertscore);
+            
+            alert("Marks saved successfully!!");
+        }
+
+
+
+    </script>
+</head>
+<body style="background: #eaeaea;">
+    <div class="branch">
+        <label>Select BranchId:</label>
+        <select id="drop" name="dropdown">
+
+            <option value="CSE" selected>CSE</option>
+            <option value="ECE"> ECE</option>
+            <option value="CIV"> CIV</option>
+            <option value="IS"> IS</option>
+            
+
+        </select>
+        </div>
+        <div class="semester">
+            <label>Select Semester:</label>
+            <select id="dropp" name="dropdown">
+
+                <option value="1" selected>1 semester</option>
+                <option value="2">2 semester</option>
+                <option value="3">3 semester</option>
+                <option value="4">4 semester</option>
+                <option value="5">5 semester</option>
+                <option value="6">6 semester</option>
+                <option value="7">7 semester</option>
+                <option value="8">8 semester</option>
+
+            </select>
+
+            &nbsp;&nbsp;<input type="submit" name="submit" value="Submit" class="btn" id="addbtnn" style="width:80px;">
+        </div>
+</body>
+</html>

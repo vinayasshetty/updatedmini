@@ -1,0 +1,14 @@
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\studentlib.dll
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\studentlib.pdb
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\obj\Debug\studentlib.csprojResolveAssemblyReference.cache
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\obj\Debug\studentlib.dll
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\obj\Debug\studentlib.pdb
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\System.Web.Cors.dll
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\System.Web.Http.Cors.dll
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\System.Web.Http.dll
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\System.Web.Http.xml
+C:\Users\Vinaya.SS\Documents\Visual Studio 2015\Projects\ADONET\studentresultmanagement\studentlib\bin\Debug\System.Web.Http.Cors.xml

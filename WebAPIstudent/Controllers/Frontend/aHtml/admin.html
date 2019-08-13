@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Login Page</title>
+    <!--<link rel="stylesheet" type="text/css" href="css/admin.css">-->
+
+    <!--<script src="JS/admin.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        var xhrR = new XMLHttpRequest();
+
+        xhrR.addEventListener("readystatechange", ajaxReadHandler);
+
+
+
+        var xhrC = new XMLHttpRequest();
+
+        xhrC.addEventListener("readystatechange", ajaxCreateHandler);
+
+
+
+        window.onload = function () {
+
+            document.getElementById("loginbtn_id").addEventListener("click", clickHandler);
+
+        };
+
+        function ajaxReadHandler(evt) {
+
+            if (evt.target.readyState === 4 && evt.target.status === 200) {
+
+                alert(xhrR.responseText);
+
+            }
+
+        }
+
+
+
+        function ajaxCreateHandler(evt) {
+
+            if (evt.target.readyState === 4 && evt.target.status === 200) {
+
+
+
+                alert(xhrC.responseText);
+                if(xhrC.responseText.replace(/\"/g, "")=="success")
+                {
+                    window.location = "adminhome.html";
+                }
+
+                else {
+                    window.location = "admin.html";
+                }
+
+            };
+
+        }
+
+
+
+        function clickHandler() {
+
+            var user = {
+
+                "username": document.getElementById("username_id").value,
+
+                "password": document.getElementById("password_id").value
+                
+
+
+            }
+
+            console.log(user);
+
+            xhrC.open("post", "http://localhost:49532/api/Student/VerifyLogin", true);
+
+            xhrC.setRequestHeader("Content-Type", "application/json");
+
+            xhrC.send(JSON.stringify(user));
+
+        }
+    </script>
+    <style>
+       
+        html, body {
+            padding: 0px;
+        }
+
+        body {
+           
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .login {
+            display: inline-block;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 30em;
+            height: 30em;
+            margin: auto;
+            border: 0px solid gray;
+            box-shadow: 7px 3px 20px 0px black;
+            background-color: rgba(0,0,0,0.65);
+            text-align: center;
+        }
+
+        p {
+            text-transform: uppercase;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            height: 35px;
+            line-height: 1.2px;
+            border-radius: 2px;
+            margin: 15px 0;
+            border: 1px solid white;
+            padding: 0;
+        }
+
+            input[type=text], input[type=password] {
+                padding-left: 10px;
+            }
+
+        form {
+            padding: 50px;
+        }
+
+        .loginbtn {
+            background-color: tomato;
+            text-transform: uppercase;
+            color: white;
+            letter-spacing: 3px;
+            border: 1px solid tomato;
+        }
+
+        
+    </style>
+    <script>
+
+
+
+    </script>
+</head>
+<body>
+    <div class="login">
+        <p> Admin Login </p>
+        <form method="" action="" id="login">
+            <input type="text" name="user_name" id="username_id" class="form-control" placeholder="Enter user_name" required>
+            <input type="password" name="password" id="password_id" class="form-control" placeholder="Enter Password">
+            <input type="button" name="submit" value="Sign In" class="loginbtn" id="loginbtn_id">
+        </form>
+       
+    </div>
+</body>
+</html>
+

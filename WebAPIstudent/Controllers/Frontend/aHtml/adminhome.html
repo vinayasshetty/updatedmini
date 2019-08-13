@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Admin Home Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <!--external css-->
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+   <style>
+       @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(line-icons.css);
+body {
+
+    color: #797979;
+
+    background: #eeeeee;
+
+    font-family: 'Lato', sans-serif;
+
+    padding: 0px !important;
+
+    margin: 0px !important;
+
+    font-size:14px !important;
+
+}
+
+a, a:hover, a:focus {
+
+    text-decoration: none;
+
+    outline: none;
+
+    outline: 0;
+
+}
+#container {
+    width: 100%;
+    height: 100%;
+
+}
+.login-img3-body .login-form p,.login-img2-body .login-form p {
+
+    color: #34aadc;
+}
+
+/*sidebar navigation*/
+#sidebar {
+
+    width: 180px;
+
+    height: 100%;
+
+    position: fixed;
+
+    background: #394a59;
+
+}
+.nav-collapse.collapse {
+
+    display: inline;
+}
+ul.sidebar-menu , ul.sidebar-menu li ul.sub{
+
+    margin: -2px 0 0;
+
+    padding: 0;
+}
+ul.sidebar-menu {
+
+    margin-top: 60px;
+
+}
+#sidebar > ul > li > ul.sub {
+
+    display: none;
+}
+ul.sidebar-menu li{
+
+    line-height: 20px !important;
+}
+ul.sidebar-menu li.sub-menu{
+
+    line-height: 15px;
+
+    font-size: 16px;
+
+}
+ul.sidebar-menu li a span{
+
+    display: inline-block;
+
+}
+ul.sidebar-menu li a{
+
+    color: #d0d8df;
+
+    text-decoration: none;
+
+    display: block;
+
+    padding: 15px 0 15px 10px;
+
+    font-size: 16px;
+
+    font-weight: 300;
+
+    outline: none;
+}
+ul.sidebar-menu li.active a, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+
+    background: #2e3b46;
+
+    color: #fff;
+
+    display: block;
+}
+ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+
+    border-bottom: 1px solid #d0d8df;
+
+}
+ul.sidebar-menu .sub-menu li.active a{
+
+    border-bottom: 1px solid #d0d8df;
+}
+ul.sidebar-menu li a i {
+
+    font-size: 18px;
+
+    padding-right: 6px;
+
+}
+ul.sidebar-menu li a:hover i, ul.sidebar-menu li a:focus i {
+
+    color: #fff;
+
+}
+ul.sidebar-menu li.active a i {
+
+    color: #fff;
+
+}
+#sidebar ul > li > a .arrow {
+
+    border-bottom: 4px solid transparent;
+
+    border-left: 4px solid #A0A0A0;
+
+    border-top: 4px solid transparent;
+
+    float: right;
+
+    height: 0;
+
+    margin-right: 10px;
+
+    margin-top: 6px;
+
+    width: 0;
+
+}
+
+#sidebar ul > li > a .menu-arrow {
+
+    float: right;
+
+    margin-right: 8px;
+
+    margin-top: 6px;
+
+}
+
+#sidebar > ul > li > a .arrow.open {
+
+    border-left: 4px solid transparent;
+
+    border-right: 4px solid transparent;
+
+    border-top: 5px solid #A0A0A0;
+
+    float: right;
+
+    height: 0;
+
+    margin-right: 10px;
+
+    margin-top: 8px;
+
+    width: 0;
+
+}
+#sidebar ul > li.active > a .arrow, #sidebar ul > li > a:hover .arrow, #sidebar ul > li > a:focus .arrow {
+
+    float: right;
+
+    margin-top: 6px;
+
+    margin-right: 10px;
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 4px solid #d0d8df;
+
+    border-top: 4px solid transparent;
+
+    border-bottom: 4px solid transparent;
+
+}
+#sidebar > ul > li.active > a .arrow.open, #sidebar > ul > li > a:hover .arrow.open, #sidebar > ul > li > a:focus .arrow.open {
+
+    float: right;
+
+    margin-top: 8px;
+
+    margin-right: 10px;
+
+    width: 0;
+
+    height: 0;
+
+    border-top: 5px solid #d0d8df;
+
+    border-left: 4px solid transparent;
+
+    border-right: 4px solid transparent;
+
+}
+#main-content {
+
+    margin-left: 180px;
+
+}
+.header, .footer {
+
+    min-height: 60px;
+
+    padding: 0 15px;
+
+}
+.header {
+
+    position: fixed;
+
+    left: 0;
+
+    right: 0;
+
+    z-index: 1002;
+
+}
+.white-bg {
+
+    background: rgba(255,255,255,0.9);
+
+    border-bottom: 1px solid #f1f2f7;
+
+}
+.dark-bg {
+
+    background: rgba(54,66,74,1);
+
+    border-bottom: 1px solid #f1f2f7;
+
+}
+a.logo {
+
+    font-size: 22px;
+
+    font-weight: 300;
+
+    color: #fed189;
+
+    float: left;
+
+    margin-top: 15px;
+
+    text-transform: uppercase;
+
+}
+#top_menu .nav > li, ul.top-menu > li {
+
+    float: left;
+}
+.buttons button{
+
+margin-top:10px;
+
+}
+.toggle-nav {
+
+    float: left;
+
+    padding-right: 15px;
+
+    margin-top: 20px;
+
+}
+.toggle-nav .icon-reorder {
+
+    cursor: pointer;
+
+    display: inline-block;
+
+    font-size: 20px;
+
+}
+.sidebar-closed > #sidebar > ul {
+
+    display: none;
+}
+.sidebar-closed #main-content {
+
+    margin-left: 0px;
+}
+.sidebar-closed #sidebar {
+
+    margin-left: -180px;
+}
+
+   </style>
+</head>
+
+<body>
+    <!-- container section start -->
+    <section id="container" class="">
+        <!--header start-->
+        <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
+
+            <!--logo start-->
+            <a href="" class="logo">Welcome <span class="lite">Admin</span></a>
+            <!--logo end-->
+
+        </header>
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+                    <li class="">
+                        <a class="" href="search.html">
+                            <span>Search Students</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="branch.html" class="">
+                            <span>Enter Scores</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="update.html" class="">
+                            <span>Update Scores</span>
+                        </a>
+
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <img src="img/admin.jpg">
+
+    </section>
+    <script src="js/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
